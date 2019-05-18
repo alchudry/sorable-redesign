@@ -1,0 +1,53 @@
+{
+  "name": "sorabel",
+  "version": "1.0.0",
+  "description": "This is a Redesign Project for Sorabel using ReactJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --mode development --open",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alchudry/sorabel-redesign.git"
+  },
+  "keywords": [
+    "sorabel",
+    "redesign"
+  ],
+  "author": "Farrizal Alchudry Mutaqien",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alchudry/sorabel-redesign/issues"
+  },
+  "homepage": "https://github.com/alchudry/sorabel-redesign#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^2.1.1",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^3.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "postcss-loader": "^3.0.0",
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.31.0",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.4.1"
+  },
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-infinite-scroller": "^1.2.4",
+    "react-redux": "^7.0.3",
+    "react-router-dom": "^5.0.0",
+    "react-viewer": "^2.8.1",
+    "redux": "^4.0.1",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.81.2"
+  }
+}
