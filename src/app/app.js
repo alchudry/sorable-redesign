@@ -5,6 +5,7 @@ import { HashRouter as Router, Route} from 'react-router-dom';
 // Page
 import HomepageContainer from '../containers/homepage';
 import ProductCategoryContainer from '../containers/product-category';
+import ProductContainer from '../containers/product'
 
 // Redux
 import configStore from './store';
@@ -18,6 +19,7 @@ class App extends React.Component{
         <Router>
           <Route exact={true} path='/' render={ () => <HomepageContainer/> }/>
           <Route exact={true} path='/product-category' render={ () => <ProductCategoryContainer/> }/>
+          <Route exact={true} path='/product' render={ () => <ProductContainer/> }/>
         </Router>
       </Provider>
     )
