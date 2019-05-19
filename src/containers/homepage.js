@@ -9,7 +9,7 @@ class HomepageContainer extends React.Component{
     return(
       <Container>
         <div>Initial Setup!</div>
-        <Button primary onClick={this.props.fetch_product}>Testing Semantic Button</Button>
+        <Button primary>Testing Semantic Button</Button>
       </Container>
     )
   }
