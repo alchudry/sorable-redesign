@@ -45,7 +45,7 @@ class CustomHeader extends React.Component{
               style={styles.topMenuContainer}>
               <Container >
                 <Menu.Item as='a' header>
-                  <Image size='tiny' src='assets/images/logo-sorabel.png'></Image>
+                  <Image size='tiny' src='assets/images/logo-sorabel.png'/>
                 </Menu.Item>
                 <Menu.Item
                   style={styles.searchItemContainer}>
