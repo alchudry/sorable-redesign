@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import faker from 'faker';
 import React from 'react';
-import { Breadcrumb, Container, Segment, Grid, Header, Card, Button, Tab, Label, Menu, Image, Table, Checkbox, Form, Divider, Rating, List } from 'semantic-ui-react';
+import { Breadcrumb, Container, Segment, Grid, Header, Card, Button, Image } from 'semantic-ui-react';
 import Swiper from 'react-id-swiper';
 import { Pagination } from 'swiper/dist/js/swiper.esm';
 
@@ -41,6 +41,18 @@ const styles = {
   },
   breadcrumbContainer: {
     paddingBottom: 20
+  },
+  productMetaContainer: {
+    paddingTop: 10
+  },
+  productSizeContainer: {
+    marginTop: 15,
+    marginBottom: 15,
+  },
+  productSize: {
+    padding: 10,
+    marginRight: 5,
+    border: '1px solid black'
   }
 }
 
@@ -118,18 +130,24 @@ class Product extends React.Component{
                   <Card.Description>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eu quam pharetra, luctus sem non, maximus arcu.
                   </Card.Description>
-                  <Card.Content>
+                  <Card.Content style={styles.productMetaContainer}>
                     <div>
                       <div>
-                        <span>Size :</span>
-                        <div>
-                          {/* Sizing */}
+                        <Header as='h4'>Size :</Header>
+                        <div style={styles.productSizeContainer}>
+                          <span style={styles.productSize}>S</span>
+                          <span style={styles.productSize}>M</span>
+                          <span style={styles.productSize}>L</span>
                         </div>
                       </div>
                       <div>
-                        <span>Qty :</span>
+                        <Header as='h4'>Qty :</Header>
                         <div>
-                          {/* Sizing */}
+                          <Button.Group>
+                            <Button>-</Button>
+                            <input value='1'/>
+                            <Button>+</Button>
+                          </Button.Group>
                         </div>
                       </div>
                     </div>
