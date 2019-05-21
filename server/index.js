@@ -1,12 +1,17 @@
 const fastify = require('fastify')({
   logger: true
 })
+const fastcors = require('fastify-cors')
 const fastswagger = require('fastify-swagger')
 const mongoose = require('mongoose')
 const swagger = require('./config/swagger')
+const cors = require('./config/cors')
 
 // Register Documentation with Swagger
 fastify.register(fastswagger, swagger.options)
+
+// Cors Config
+fastify.register(fastcors, cors.options)
 
 // DB Constanta
 const dbUrl = 'mongodb://localhost/sorabel'

@@ -1,10 +1,11 @@
 import _ from 'lodash';
 import React from 'react';
-import { Segment, Grid, Image, Checkbox, Dropdown, Responsive } from 'semantic-ui-react';
+import Swiper from 'react-id-swiper';
+import { Segment, Grid, Image, Dropdown, Responsive } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Swiper from 'react-id-swiper';
+import { withRouter } from 'react-router-dom';
 import { Pagination } from 'swiper/dist/js/swiper.esm';
 
 import { actions as productActions } from '../reducers/productReducers';
@@ -72,7 +73,7 @@ class ProductCategoryContainer extends React.Component{
 
   componentWillMount(){
     {/* Initial Data Load */}
-    this.props.fetch_product();
+    this.props.fetch_all_product();
   }
 
   listenScroll = () =>{
@@ -83,13 +84,13 @@ class ProductCategoryContainer extends React.Component{
       const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
       const windowBottom = windowHeight + window.pageYOffset;
       if (windowBottom >= docHeight) {
-        this.props.fetch_product();
+        this.props.fetch_all_product();
       }
     }
   }
   render(){
     {/* Product State */}
-    const { dataProduct, dataRecommendedProduct } = this.props.product;
+    const { dataProduct, dataRecommendedProduct, isLoading } = this.props.product;
     return(
       <div>
         {/* Header Component */}
@@ -202,7 +203,7 @@ class ProductCategoryContainer extends React.Component{
             </Grid>
           </Segment>
           {/* Segment Product List */}
-          <Segment style={styles.productContainer}>
+          <Segment style={styles.productContainer} loading={isLoading}>
             <Grid stackable centered>
               {dataProduct.map((data, index)=>{
                   if(index != 6){
@@ -213,7 +214,7 @@ class ProductCategoryContainer extends React.Component{
                         mobile={16}
                         tablet={6}
                       >
-                        <Link to={'/product/'+data.id}>
+                        <Link to={'/product/'+data._id}>
                           <ProductCard
                             productImage={data.featuredImage}
                             productName={data.name}
@@ -255,4 +256,4 @@ const mapDispatchToProps = dispatch => ({
   }, dispatch)
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductCategoryContainer);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ProductCategoryContainer));

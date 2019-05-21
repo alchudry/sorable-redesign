@@ -1,9 +1,14 @@
 import _ from 'lodash';
 import faker from 'faker';
 import React from 'react';
-import { Breadcrumb, Container, Segment, Grid, Header, Card, Button, Image, Responsive, Visibility, Input } from 'semantic-ui-react';
 import Swiper from 'react-id-swiper';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { Breadcrumb, Container, Segment, Grid, Header, Card, Button, Image, Responsive, Visibility, Input } from 'semantic-ui-react';
 import { Pagination } from 'swiper/dist/js/swiper.esm';
+
+import { actions as productActions } from '../reducers/productReducers';
 
 import {ResponsiveContainer} from '../components/responsive-container';
 import { styles } from '../styles/productStyle';
@@ -32,24 +37,27 @@ const breadcrumbSections = [
   { key: 'Current Product', content: 'Current Product', active: true },
 ]
 
+
 class Product extends React.Component{
-  _navGallery = (index) => {
-    alert(index);
+  componentDidMount(){
+    const { match: { params } } = this.props;
+    this.props.fetch_product(params.productId);
   }
   
   render(){
-    const productData = {
+    const dataProduct = {
       name: faker.commerce.productName(),
-      featuredImage: _.times(3, () => 'assets/images/product-' + faker.random.number({min: 1, max: 6}) + '.jpg'),
+      galleryImage: _.times(3, () => 'assets/images/product-' + faker.random.number({min: 1, max: 6}) + '.jpg'),
       price: faker.commerce.price(),
       color: faker.commerce.color()
     };
+    const { selectedProduct, isLoading } = this.props.product;
     return(
       <div>
         {/* Header Component */}
         <ResponsiveContainer>
           <Container>
-            <Segment style={styles.productInfoContainer}>
+            <Segment style={styles.productInfoContainer}  loading={isLoading}>
               <Breadcrumb
                 style={styles.breadcrumbContainer}
                 icon='right angle'
@@ -66,10 +74,10 @@ class Product extends React.Component{
                       <Segment style={styles.galleryNavContainer}>
                         {/* Vertical Swiper */}
                         {/* <Grid.Row> */}
-                          {productData.featuredImage.map((navItem, index)=>{
+                          {dataProduct.galleryImage.map((navItem, index)=>{
                             return(
                               <Grid.Row key={index} style={styles.navGalleryItem}>
-                                <Image src={navItem} fluid onClick={ () => this.gallerySwiper.scrollBy(index) }/>
+                                <Image src={navItem} fluid onClick={ () => alert(index) }/>
                               </Grid.Row>
                             )
                           })}
@@ -81,7 +89,7 @@ class Product extends React.Component{
                 <Grid.Column width={8} floated='left'>
                   {/* Horizontal Swiper */}
                   <Swiper {...galleryParams}>
-                    {productData.featuredImage.map((galleryItem, index)=>{
+                    {dataProduct.galleryImage.map((galleryItem, index)=>{
                       return(
                         <Image key={index} src={galleryItem} fluid/>
                       )
@@ -128,4 +136,15 @@ class Product extends React.Component{
   }
 }
 
-export default Product;
+const mapStateToProps = state => ({
+  ...state
+})
+
+const mapDispatchToProps = dispatch => ({
+  ...bindActionCreators({
+    ...productActions
+  }, dispatch)
+})
+
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Product));
