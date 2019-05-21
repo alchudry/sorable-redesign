@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --mode development --open",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "server-start": "./node_modules/nodemon/bin/nodemon.js ./server/index.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
   "homepage": "https://github.com/alchudry/sorabel-redesign#readme",
   "devDependencies": {
     "@babel/core": "^7.4.4",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
     "babel-core": "^6.26.3",
@@ -40,14 +42,23 @@
     "webpack-dev-server": "^3.4.1"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "boom": "^7.3.0",
+    "faker": "^4.1.0",
+    "fastify": "^2.3.0",
+    "fastify-cors": "^2.1.3",
+    "fastify-swagger": "^2.4.0",
+    "mongoose": "^5.5.9",
+    "nodemon": "^1.19.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-infinite-scroller": "^1.2.4",
+    "react-id-swiper": "^2.1.2",
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.0",
     "react-viewer": "^2.8.1",
     "redux": "^4.0.1",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^0.81.2"
+    "semantic-ui-react": "^0.81.2",
+    "swiper": "^4.5.0"
   }
 }
