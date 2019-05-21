@@ -25,6 +25,10 @@ Note:
 - http://localhost/#/product-category/moeslim-wear - - http://localhost/#/product-category/{productCategory}
 - http://localhost/#/product/1 - - http://localhost/#/product/{productId}
 
+#Build
+Run npm run build for building the project.
+
 
 Side Note:
-Homepage only for generating random data from _faker to use as Backend Data
+- Homepage only for generating random data from _faker to use as Backend Data
+- Using add copy webpack plugin since the assets (image product) is local
