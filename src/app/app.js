@@ -18,8 +18,8 @@ class App extends React.Component{
       <Provider store={store}>
         <Router>
           <Route exact={true} path='/' render={ () => <HomepageContainer/> }/>
-          <Route exact={true} path='/product-category' render={ () => <ProductCategoryContainer/> }/>
-          <Route exact={true} path='/product' render={ () => <ProductContainer/> }/>
+          <Route exact={true} path='/product-category/:categoryId' render={ () => <ProductCategoryContainer/> }/>
+          <Route exact={true} path='/product/:productId' render={ () => <ProductContainer/> }/>
         </Router>
       </Provider>
     )

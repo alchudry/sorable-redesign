@@ -1,5 +1,4 @@
 import React from 'react';
-// import { productRows } from './config';
 import { Card, List, Container, Image } from 'semantic-ui-react';
 import Swiper from 'react-id-swiper';
 

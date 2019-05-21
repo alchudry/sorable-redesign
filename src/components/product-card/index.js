@@ -24,6 +24,7 @@ class ProductCard extends React.Component{
     return(
       <Card 
         fluid
+        link
         style={styles.productContainer}
       >
         <Image
