@@ -1,5 +1,6 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const CopyPlugin = require('copy-webpack-plugin');
 
 const htmlPlugin = new HtmlWebPackPlugin({
   template: "./src/index.html",
@@ -7,6 +8,10 @@ const htmlPlugin = new HtmlWebPackPlugin({
 });
 
 const etpPlugin = new ExtractTextPlugin("styles.css");
+
+const cpPlugin = new CopyPlugin([
+  { from: 'assets', to: 'assets' },
+])
 
 module.exports = {
   module: {
@@ -49,6 +54,7 @@ module.exports = {
   },
   plugins: [
     htmlPlugin,
-    etpPlugin
+    etpPlugin,
+    cpPlugin
   ]
 };
